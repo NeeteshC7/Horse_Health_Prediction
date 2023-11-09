@@ -1,0 +1,8 @@
+#image-container {
+    text-align: center;
+  }
+  
+  #horse-image {
+    width: 900px;
+    border-radius: 10%;
+  }

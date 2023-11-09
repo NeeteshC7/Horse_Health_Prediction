@@ -106,6 +106,7 @@ class DataTransformation:
                 train_arr = pd.concat([input_feature_train_arr, target_feature_train_df], axis=1)
                 test_arr = pd.concat([input_feature_test_arr, target_feature_test_df], axis=1)
                 logging.info(f"Columns in training data : {train_arr.columns}")
+                logging.info(f"First row : {train_arr.iloc[0].values.tolist() }")
 
                 logging.info(f"Saved preprocessing object.")
 

@@ -1,0 +1,219 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<body>
+    <div class="container">
+        <div class="horse-health-form">
+            <h1>Horse Health Data</h1>
+            {% if  results ==0 %}
+            <h2>
+                Please fill below fields and click Submit
+            </h2>
+
+            {% else %}
+            <h2>
+                The prediction is {{ results }}
+            </h2>
+            {% endif %}
+
+            <form action="{{ url_for('predict_datapoint') }}" method="post">
+                <div class="mb-3">
+                    <label class="form-label">Surgery</label>
+                    <select class="form-select" name="surgery" required>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Age</label>
+                    <select class="form-select" name="age" required>
+                        <option value="adult">Adult</option>
+                        <option value="young">Young</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Hospital Number</label>
+                    <input class="form-control" type="text" name="hospital_number" placeholder="Enter Hospital Number"
+                        required style="width: 300px;"> <!-- Adjust the width as needed -->
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Rectal Temperature</label>
+                    <input class="form-control" type="number" name="rectal_temp" placeholder="Enter Rectal Temperature"
+                        step="0.01" required style="width: 300px;">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Pulse</label>
+                    <input class="form-control" type="number" name="pulse" placeholder="Enter Pulse" required
+                        style="width: 300px;">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Respiratory Rate</label>
+                    <input class="form-control" type="number" name="respiratory_rate"
+                        placeholder="Enter Respiratory Rate" required style="width: 300px;">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Temperature of Extremities</label>
+                    <select class="form-select" name="temp_of_extremities" required>
+                        <option value="cool">Cool</option>
+                        <option value="cold">Cold</option>
+                        <option value="normal">Normal</option>
+                        <option value="warm">Warm</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Peripheral Pulse</label>
+                    <select class="form-select" name="peripheral_pulse" required>
+                        <option value="reduced">Reduced</option>
+                        <option value="normal">Normal</option>
+                        <option value="absent">Absent</option>
+                        <option value="increased">Increased</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Mucous Membrane</label>
+                    <select class="form-select" name="mucous_membrane" required>
+                        <option value="dark_cyanotic">Dark Cyanotic</option>
+                        <option value="pale_cyanotic">Pale Cyanotic</option>
+                        <option value="pale_pink">Pale Pink</option>
+                        <option value="normal_pink">Normal Pink</option>
+                        <option value="bright_pink">Bright Pink</option>
+                        <option value="bright_red">Bright Red</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Capillary Refill Time</label>
+                    <select class="form-select" name="capillary_refill_time" required>
+                        <option value="more_3_sec">More than 3 seconds</option>
+                        <option value="less_3_sec">Less than 3 seconds</option>
+                        <option value="3">3 seconds</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Pain</label>
+                    <select class="form-select" name="pain" required>
+                        <option value="depressed">Depressed</option>
+                        <option value="mild_pain">Mild Pain</option>
+                        <option value="extreme_pain">Extreme Pain</option>
+                        <option value="alert">Alert</option>
+                        <option value="severe_pain">Severe Pain</option>
+                        <option value="slight">Slight</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Peristalsis</label>
+                    <select class="form-select" name="peristalsis" required>
+                        <option value="absent">Absent</option>
+                        <option value="hypomotile">Hypomotile</option>
+                        <option value="normal">Normal</option>
+                        <option value="hypermotile">Hypermotile</option>
+                        <option value="distend_small">Distend Small</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Abdominal Distention</label>
+                    <select class="form-select" name="abdominal_distention" required>
+                        <option value="slight">Slight</option>
+                        <option value="moderate">Moderate</option>
+                        <option value="none">None</option>
+                        <option value="severe">Severe</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Nasogastric Tube</label>
+                    <select class="form-select" name="nasogastric_tube" required>
+                        <option value="slight">Slight</option>
+                        <option value="none">None</option>
+                        <option value="significant">Significant</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Nasogastric Reflux</label>
+                    <select class="form-select" name="nasogastric_reflux" required>
+                        <option value="less_1_liter">Less than 1 liter</option>
+                        <option value="more_1_liter">More than 1 liter</option>
+                        <option value="none">None</option>
+                        <option value="slight">Slight</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Nasogastric Reflux pH</label>
+                    <input class="form-control" type="number" name="nasogastric_reflux_ph"
+                        placeholder="Enter Nasogastric Reflux pH" step="0.01" required style="width: 300px;">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Rectal Exam Feces</label>
+                    <select class="form-select" name="rectal_exam_feces" required>
+                        <option value="decreased">Decreased</option>
+                        <option value="absent">Absent</option>
+                        <option value="None">None</option>
+                        <option value="normal">Normal</option>
+                        <option value="increased">Increased</option>
+                        <option value="serosanguinous">Serosanguinous</option>
+                        <option value="nan">nan</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Abdomen</label>
+                    <select class="form-select" name="abdomen" required>
+                        <option value="distend_small">Distend Small</option>
+                        <option value="distend_large">Distend Large</option>
+                        <option value="normal">Normal</option>
+                        <option value="firm">Firm</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Packed Cell Volume</label>
+                    <input class="form-control" type="number" name="packed_cell_volume"
+                        placeholder="Enter Packed Cell Volume" step="0.01" required style="width: 300px;">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Total Protein</label>
+                    <input class="form-control" type="number" name="total_protein" placeholder="Enter Total Protein"
+                        step="0.01" required style="width: 300px;">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Abdomo Appearance</label>
+                    <select class="form-select" name="abdomo_appearance" required>
+                        <option value="serosanguious">Serosanguious</option>
+                        <option value="cloudy">Cloudy</option>
+                        <option value="clear">Clear</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Abdomo Protein</label>
+                    <input class="form-control" type="number" name="abdomo_protein" placeholder="Enter Abdomo Protein"
+                        step="0.01" required style="width: 300px;">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Surgical Lesion</label>
+                    <select class="form-select" name="surgical_lesion" required>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Lesion 1</label>
+                    <input class="form-control" type="number" name="lesion_1" placeholder="Enter Lesion 1" required
+                        style="width: 300px;">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Lesion 2</label>
+                    <input class="form-control" type="number" name="lesion_2" placeholder="Enter Lesion 2" required
+                        style="width: 300px;">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Cp Data</label>
+                    <select class="form-select" name="cp_data" required>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <input class="btn btn-dark" type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+{% endblock body %}

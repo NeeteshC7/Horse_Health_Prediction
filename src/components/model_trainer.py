@@ -78,6 +78,7 @@ class ModelTrainer:
             )
 
             predicted = best_model.predict(X_test)
+            logging.info(f"First row of Test Dataset : {X_test.iloc[0].values.tolist() }")
 
             accuracy_scores = accuracy_score(y_test, predicted)
 

@@ -1,1 +1,21 @@
-<h1>Welcome to the home page</h1>
+{% extends 'base.html' %}
+{% block body %}
+
+
+
+<body>
+    <h1>Horse Health Prediction</h1>
+    <br>
+
+    <p>
+        This project is based on Horse Health Dataset from kaggle and Machine learning is used to infer if horse will
+        live or die
+    </p>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <div id="image-container">
+        <img id="horse-image" src="{{ url_for('static', filename='horse.jpg') }}" alt="Horse Image">
+    </div>
+
+</body>
+{% endblock body %}
