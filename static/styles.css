@@ -1,8 +1,14 @@
 #image-container {
     text-align: center;
   }
+
+  /* styles.css */
+body {
+  background-color: #f4F4F4;
+}
+
   
   #horse-image {
-    width: 900px;
+    width: 650px;
     border-radius: 10%;
   }

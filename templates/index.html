@@ -4,14 +4,20 @@
 
 
 <body>
-    <h1>Horse Health Prediction</h1>
-    <br>
-
+    <div class="mx-3">
+    <h1 class="display-3">Horse Health Prediction</h1>
+    <p class="lead">
+        Welcome to our Flask-based Horse Health Prediction App! </p>
+    <hr class="my-8">
+   
     <p>
-        This project is based on Horse Health Dataset from kaggle and Machine learning is used to infer if horse will
-        live or die
-    </p>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        Using Machine learning, our application utilizes a Kaggle dataset to predict the outcomes of
+        horses' health conditions. By analyzing various factors, we provide insights into whether a horse is likely to
+        live, face euthanasia, or unfortunately, succumb to its health challenges. This user-friendly tool aims to
+        assist veterinarians, horse owners, and enthusiasts in making informed decisions about the well-being of these
+        magnificent animals. Explore the future of equine health with our predictive model!
+    </p> </div>
+   
 
     <div id="image-container">
         <img id="horse-image" src="{{ url_for('static', filename='horse.jpg') }}" alt="Horse Image">

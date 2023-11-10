@@ -4,17 +4,19 @@
 <body>
     <div class="container">
         <div class="horse-health-form">
-            <h1>Horse Health Data</h1>
+            <h1 class="display-3">Horse Health Data</h1>
+            <hr class="my-4">
             {% if  results ==0 %}
-            <h2>
+            <h2 class="lead">
                 Please fill below fields and click Submit
             </h2>
 
             {% else %}
-            <h2>
+            <h2 class="display-4">
                 The prediction is {{ results }}
             </h2>
             {% endif %}
+            <hr class="my-8">
 
             <form action="{{ url_for('predict_datapoint') }}" method="post">
                 <div class="mb-3">
