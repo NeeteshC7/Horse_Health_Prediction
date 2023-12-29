@@ -71,4 +71,4 @@ Contributions welcome! Fork the repository and submit pull requests 🤝.
 
 ## Contact
 
-For inquiries or feedback, contact [your.email@example.com](mailto:your.email@example.com) 📧.
+For inquiries or feedback, contact [here](mailto:neeteshchauhan3@gmail.com) 📧.
